@@ -1,0 +1,33 @@
+{
+  "name": "ccda-receiver",
+  "version": "0.0.1",
+  "description": "Import CCDA -> JSON.  Then serve resources over a RESTful API",
+  "author": "Josh Mandel <joshua.mandel@childrens.harvard.edu>",
+  "scripts":{
+   "start": "node ./launch.js"
+  },
+  "dependencies": {
+    "socket.io": "*",
+    "node-markdown": "*",
+    "bson": "*",
+    "connect-powered-by": "0.1.x",
+    "async": "*",
+    "hashish": "*",
+    "restler": "*",
+    "express": "*",
+    "mongodb": "1.1.11",
+    "xdate":"*",
+    "optimist":"*",
+    "mocha":"*",
+    "should":"*",
+    "node-uuid":"*",
+		"underscore":"*",
+    "jade": "*",
+    "ejs": "*",
+    "stylus": "*",
+    "winston": "*"
+  },
+  "devDependencies": {
+  },
+  "engine": "node >= 0.6.0"
+}

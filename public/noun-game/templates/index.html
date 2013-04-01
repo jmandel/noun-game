@@ -1,0 +1,55 @@
+<div class="span-8">
+
+<div ng-switch on="status.round">
+<h2 ng-switch-when="Fill basket">Pre-game: Fill basket</h2>
+<h2 ng-switch-when="Taboo">Round 1: Taboo</h2>
+<h2 ng-switch-when="Just one word">Round 2: Just one word</h2>
+<h2 ng-switch-when="No words (Charades)">Round 3: No words (charades)</h2>
+<h2 ng-switch-default>Game over</h2>
+</div>
+
+<form ng-show="status.round == 'Fill basket' || debug">
+<input AUTOFOCUS ng-model="newWord" placeholder="Your word or phrase here"></input>
+<input type="submit" value="Add to basket" ng-click="addWord(newWord)" />
+</form>
+
+<div ng-show="status.waitingToBegin || debug">
+<h1>
+
+<button class="btn btn-large btn-primary"
+  ng-class="{
+    'btn-warning': status.nowPlaying=='Orange', 
+    'btn-primary': status.nowPlaying=='Blue'}"
+  ng-click="startTurn()"
+>Start a {{status.round}} turn!</button>
+
+</h1>
+</div>
+
+<h2 ng-show="status.round == 'Game over'">
+<em>{{status.points['Orange'] > status.points['Blue'] && 'Orange' || 'Blue'}} won!</em>
+<br>
+<button ng-click="newGame()" class="btn btn-large btn-primary">
+New Game
+</button>
+</h2>
+
+<h2 ng-show="!status.waitingToBegin && playRound() && timeToStart">Ready... {{timeToStart}}</h2>
+<h2 ng-show="!status.waitingToBegin && playRound() && !timeToStart">Time: {{timeLeft}}
+<div ng-show="currentPlayer || debug">
+<h1>“{{currentWord()}}”</h1>
+<button class='btn btn-success btn-large' " ng-click="slip(true)">Got it!</button>&nbsp;<button class='btn btn-danger btn-large' ng-click="slip(false)">Skip it!</button>
+</div>
+
+</h2>
+ <small><em>Score: </em>
+   {{status.points|json}}<br>
+   skew: {{skew()}}
+ </small></div>
+<div class="span-4">
+  <pre ng-show="debug">{{status|json}}</pre>
+</div>
+<audio id="timeUp" preload="auto">
+    <source src="/static/sound/ding.wav" />
+ </audio>
+

@@ -1,0 +1,17 @@
+<div class="span-8">
+<div ng-show="games.length > 0">
+  <h2>Pick a room</h2>
+</div>
+<ul>
+  <li ng-repeat="game in games">
+  <a ng-click="pick(game.id)"> {{game.id}}</a><span ng-show="game.coords.lat">@{{game.coords}}</span>
+  ({{game.totalWords}} words)
+</ul>
+
+  <h2>Create a room</h2>
+<form class="well">
+  <input type="text" AUTOFOCUS ng-model="gid" placeholder="Name your new room"></input><br>
+  <input type="number"  ng-model="count" size="3" placeholder="# words (recommend 3/player)"></input><br>
+  <input ng-click="create(gid, count)" type="submit" value="Create" class="btn"></input>
+</form>
+</div>

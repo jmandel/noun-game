@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The Noun Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/stylesheets/style.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>
+    <script src="/static/bootstrap/js/jquery.js"></script>
+    <script src="/static/angular/angular.js"></script>
+  </head>
+
+  <body ng-app="nounGame" ng-controller="MainController">
+    <div class="container">
+      <div class="navbar navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="/">The Noun Game!</a>
+            <ul class="nav pull-right" ng-show="status.totalWords" ng-cloak>
+              <li><a class="brand" href="#">
+                 Words in Basket: <strong>
+                    {{status.words.length || "0"}} / 
+                    {{status.totalWords}} 
+                 </strong>
+                 </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+      <div ng-view>
+      
+      </div>
+    </div>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/angular/angular-resource.js"></script>
+    <script src="/static/angular/angular-sanitize.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/noun-game/controllers.js"></script>
+  </body>
+</html>
+
